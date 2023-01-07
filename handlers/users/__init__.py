@@ -17,6 +17,7 @@ user_router.include_router(router=user_product_router)
 user_router.include_router(router=user_main_router)
 
 
+
 __all__: list[str] = [
     'user_router'
 ]

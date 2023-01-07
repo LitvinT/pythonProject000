@@ -119,6 +119,7 @@ class User(BaseMixin, Base):
     __tablename__: str = 'users'
 
     id = Column(BigInteger, primary_key=True)
+    name = Column(VARCHAR(128), nullable=False)
     role_id = Column(SmallInteger, ForeignKey('roles.id', ondelete='NO ACTION'), nullable=True)
 
     def __str__(self):
@@ -214,6 +215,16 @@ class Sex(BaseMixin, Base):
 
     def __str__(self):
         return self.sex
+
+
+class Basket(BaseMixin, Base):
+    __tablename__: str = 'baskets'
+
+    id = Column(SmallInteger, primary_key=True)
+    user_id = Column(BigInteger, ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
+    sex_id = Column(SmallInteger, ForeignKey('sex.id', ondelete='CASCADE'), nullable=False)
+    product_id = Column(Integer, ForeignKey('products.id', ondelete='CASCADE'), nullable=False)
+
 
 
 
